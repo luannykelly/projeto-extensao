@@ -1,6 +1,6 @@
 %%-----------------------------------------------------------------------
 \documentclass[12pt,oneside,a4paper,chapter=TITLE,
-			   english,brazil]{abntex2}
+               english,brazil]{abntex2}
 
 %%-----------------------------------------------------------------------
 % Padronização UEPB
@@ -27,6 +27,15 @@
 \usepackage{float}
 \usepackage{mdframed}
 \usepackage{geometry}
+\usepackage{hyperref} % <-- ESTAVA FALTANDO
+
+%%-----------------------------------------------------------------------
+% Caminho das imagens (IMPORTANTE)
+\graphicspath{{./}}
+
+%%-----------------------------------------------------------------------
+% Força o nome da logo (sem extensão)
+\renewcommand{\imprimirlogo}{logo_UEPB}
 
 \bibliographystyle{abntex2-alf}
 
@@ -76,9 +85,9 @@
 
 %%-----------------------------------------------------------------------
 % Informações do trabalho
-\titulo{PROGNITIVE: Promovendo Habilidades Cognitivas de Programação para Alunos do Ensino Médio, Técnico e Profissionalizante da Região de Patos-PB.}
+\titulo{PROGNITIVE: Promovendo Habilidades Cognitivas de Programação para Alunos do Ensino Médio, Técnico e Profissionalizante da Região de Patos-PB}
 \autor{Mikaelle Oliveira Santos Gomes}
-\local{Patos - PB}
+\local{Patos -- PB}
 \data{2025}
 
 \makeindex
@@ -89,7 +98,7 @@
 \frenchspacing
 \pretextual
 
-% CAPA (logo precisa existir na raiz)
+% CAPA
 \imprimircapa
 
 \setcounter{page}{2}
@@ -100,26 +109,10 @@
 \pagestyle{simple}
 \aliaspagestyle{chapter}{simple}
 
-\input{elementos-textuais/dados.tex}
-\input{elementos-textuais/identificacao-dos-participantes.tex}
-\input{elementos-textuais/introducao.tex}
-\input{elementos-textuais/objetivos.tex}
-\input{elementos-textuais/metodologia.tex}
-\input{elementos-textuais/etapas.tex}
-\input{elementos-textuais/acoes.tex}
-\input{elementos-textuais/duracao.tex}
-\input{elementos-textuais/comunidade.tex}
-\input{elementos-textuais/local.tex}
-\input{elementos-textuais/resultados.tex}
-\input{elementos-textuais/producoes.tex}
-\input{elementos-textuais/eventos.tex}
-\input{elementos-textuais/outras-atividades.tex}
-
-%%-----------------------------------------------------------------------
-% Referências
-\bibliography{modelo_Bibtex}
-
-\phantompart
-\printindex
-
-\end{document}
+\input{elementos-textuais/dados}
+\input{elementos-textuais/identificacao-dos-participantes}
+\input{elementos-textuais/introducao}
+\input{elementos-textuais/objetivos}
+\input{elementos-textuais/metodologia}
+\input{elementos-textuais/etapas}
+\input{elementos-textuais/acoes}
