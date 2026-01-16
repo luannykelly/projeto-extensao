@@ -1,0 +1,171 @@
+%%-----------------------------------------------------------------------
+% O argumento chapter=TITLE define que todos os títulos de capítulos
+% saiam em caixa alta (maiúsculas). Se não quiser caixa alta, basta
+% remover este argumento.
+\documentclass[12pt,oneside,a4paper,chapter=TITLE,
+			   english,brazil]{abntex2}
+
+
+%%-----------------------------------------------------------------------
+% Carregando a padronização para a capa, contra-capa e folha de
+% assinaturas adotada pela UEPB
+\usepackage{TCC_UEPB}
+
+% Please add the following required packages to your document preamble:
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl} \usepackage[table,xcdraw]{xcolor}
+
+%%-----------------------------------------------------------------------
+% Pacotes básicos 
+\usepackage{mathptmx}		% Usa a fonte Times New Roman
+\usepackage[T1]{fontenc}	% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}	% Cod. do doc. (conversão autom. dos acentos)
+\usepackage{lastpage}		% Usado pela Ficha catalográfica
+\usepackage{indentfirst}	% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}			% Controle das cores
+\usepackage{graphicx}		% Inclusão de gráficos
+\usepackage{microtype} 		% para melhorias de justificação
+\usepackage{pdfpages}
+\usepackage{supertabular}
+\usepackage{float}
+\usepackage{mdframed}
+\usepackage{geometry}
+\usepackage{multirow}
+\bibliographystyle{abntex2-alf.bst} %Sobrenome em minusculo dos autores dentro de parenteses
+\usepackage{colortbl}
+\definecolor{lightgray}{gray}{0.9}
+
+
+%%------------------------------------------------------------------------
+% Pacotes adicionais, para definir ambientes para definição, teorema 
+% e axioma. Outros ambientes podem ser definidos da mesma forma...
+\usepackage{amssymb}     % qed
+\usepackage{amsthm}      % Teoremas
+\usepackage{amsmath}     % Para o ambiente align (alinhar equações)
+\usepackage{thmtools}    % Front end para amsthm (\declaretheorem)
+
+
+%%-----------------------------------------------------------------------
+% Definição de ambientes para definição, teorema, etc...
+\declaretheorem[style=definition,name=Definição,qed=\textemdash]{definicao}
+\declaretheorem[style=plain,name=Teorema,qed=\textnormal{\textemdash}]{teorema}
+\declaretheorem[style=plain,name=Axioma,qed=\textnormal{\textemdash}]{axioma}
+\declaretheorem[style=plain,name=Lema,qed=\textnormal{\textemdash}]{lema}
+\usepackage{pdfpages}
+\usepackage{float}
+
+%%------------------------------------------------------------------------
+% Pacotes de citações
+\usepackage[brazilian,hyperpageref]{backref} % Página citada na bibliog.
+\usepackage[alf]{abntex2cite}				 % Citações padrão ABNT
+
+
+
+%%-----------------------------------------------------------------------
+%% CONFIGURAÇÕES DE PACOTES
+%%-----------------------------------------------------------------------
+
+
+%%-----------------------------------------------------------------------
+% Configurações do pacote backref Usado sem a opção hyperpageref
+% de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}   % Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+
+%%----------------------------------------------------------------------
+% Configurações de aparência do PDF final
+\makeatletter
+\hypersetup{     % informações do PDF
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	colorlinks=true,   % false: box links; true: color links
+	linkcolor=black,   % color of internal links
+	citecolor=black,   % color of links to bibliography
+	filecolor=black,   % color of file links
+	urlcolor=black,    % color of url links
+	bookmarksdepth=4
+}
+\makeatother
+
+
+%%------------------------------------------------------------------
+% Cria uma nova série (de símbolos) para footnotes
+\newcounter{savefootnote}
+\newcounter{symfootnote}
+\newcommand{\symfootnote}[1]{%
+	\setcounter{savefootnote}{\value{footnote}}%
+	\setcounter{footnote}{\value{symfootnote}}%
+	\ifnum\value{footnote}>8\setcounter{footnote}{0}\fi%
+	\let\oldthefootnote=\thefootnote%
+	\renewcommand{\thefootnote}{\fnsymbol{footnote}}%
+	\footnote{#1}%
+	\let\thefootnote=\oldthefootnote%
+	\setcounter{symfootnote}{\value{footnote}}%
+	\setcounter{footnote}{\value{savefootnote}}%
+}
+
+
+%Informações
+\titulo{PROGNITIVE: Promovendo Habilidades Cognitivas de Programação para Alunos do Ensino Médio, Técnico e Profissionalizante da Região de Patos-PB.} 
+\autor{Mikaelle Oliveira Santos Gomes} 
+\local{Patos - PB}
+\data{2025}
+
+
+\makeindex
+\begin{document}
+
+\frenchspacing 
+\pretextual
+\imprimircapa
+
+%Ficha catalográfica
+%\begin{fichacatalografica}
+%\includepdf{figuras/Ficha-Catalografica.pdf}
+%\end{fichacatalografica}
+\setcounter{page}{2}
+
+%Folha de aprovação
+
+% Inserir folha de aprovação
+\setlength{\ABNTEXsignwidth}{8cm}    
+
+
+%Elementos Textuais
+\textual
+\pagestyle{simple}
+\aliaspagestyle{chapter}{simple}
+
+\input{elementos-textuais/dados}
+\input{elementos-textuais/identificacao-dos-participantes}
+\input{elementos-textuais/introducao}
+\input{elementos-textuais/objetivos}
+\input{elementos-textuais/metodologia}
+\input{elementos-textuais/etapas}
+\input{elementos-textuais/acoes}
+\input{elementos-textuais/duracao}
+\input{elementos-textuais/comunidade}
+\input{elementos-textuais/local}
+\input{elementos-textuais/resultados}
+\input{elementos-textuais/producoes}
+\input{elementos-textuais/eventos}
+\input{elementos-textuais/outras-atividades}
+%referências
+\bibliography{modelo_Bibtex}
+
+\phantompart
+\printindex
+
+\end{document}
